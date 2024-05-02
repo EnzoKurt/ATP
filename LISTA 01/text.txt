@@ -1,1 +1,141 @@
-44455
+Lista de Exercícios
+
+1. Faça um programa para ler a base e a altura de um retângulo e mostrar seu perímetro, área e diagonal.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double b,h,p,a,d;
+    Console.WriteLine ("Digite a base e a altura do retângulo:");
+    b = int.Parse(Console.ReadLine());//coleta da base
+    h = int.Parse(Console.ReadLine());//coleta da altura
+    p= 2*(b+h);//calculo do perimetro
+    a= b*h;//calculo da area
+    d= Math.Sqrt(Math.Pow(b,2) + Math.Pow(h,2));//calculo da diagonal
+    Console.WriteLine($"O perímetro mede {0}, a área mede {1} e a diagonal mede {2} "+ p,a,d);
+    
+  }
+}
+2. Faça um programa para ler os valores dos catetos de um triângulo retângulo e mostrar a
+hipotenusa.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int b,c;
+    double a;
+    Console.WriteLine ("Digite o valor dos cateto 1: ");
+    b=int.Parse(Console.ReadLine()); //coleta valor do cateto 1
+    Console.WriteLine ("Digite o valor dos cateto 1: ");
+    c=int.Parse(Console.ReadLine());//coleta valor do cateto 2
+    a=Math.Sqrt(Math.Pow(b,2)+Math.Pow(c,2));//calculo da hipotenusa
+    Console.WriteLine("O valor da hipotenusa é: "+a);//imprime o valor da hipotenusa
+  }
+}
+3. Sabendo que 100 kilowatt de energia custa um sétimo do salário mínimo, faça um programa
+para ler o valor do salário mínimo e a quantidade de kilowatt gasta em uma residência,
+calcular e mostrar: o valor em reais de cada kilowatt; o valor em reais a ser pago; e o novo
+valor a ser pago por essa residência com um desconto de 10%.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double s,kw,vkw, vap, vd;
+    Console.WriteLine ("Digite o valor do salário mínimo: ");
+    s = double.Parse(Console.ReadLine());//salário mínimo
+    Console.WriteLine ("Digite a quantidade de quilowatts gastos: ");
+    kw = double.Parse(Console.ReadLine());//quilowatts gastos
+    vkw= (s/7)/100;//valor de cada quilowatt
+    vap= vkw*kw;//valor a pagar
+    vd= vap*0.9;//valor com desconto
+    Console.WriteLine($"O valor de cada quilowatt é {0}, o valor a ser pago é {1} e o valor com desconto é {2}"+ vkw,vap,vd); //imprime os valores
+  }
+}
+4. Construa um algoritmo que, tendo como dados de entrada dois pontos quaisquer no plano,
+P(x1,y1) e P(x2,y2), escreva a distância entre eles. 
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double d,x1,x2,y1,y2;
+    Console.WriteLine ("Digite o valor das coordenadas x1,x2,y1,y2");
+    x1 = double.Parse(Console.ReadLine());//coleta o valor de x1
+    x2 = double.Parse(Console.ReadLine());//coleta o valor de x2
+    y1 = double.Parse(Console.ReadLine());//coleta o valor de y1
+    y2 = double.Parse(Console.ReadLine());//coleta o valor de y2
+    d= Math.Sqrt(Math.Pow(x2-x1,2)+Math.Pow(y2-y1,2));//calcula a distancia entre os pontos
+    Console.WriteLine("A distância entre os pontos é: {0}",d);//imprime o resultado
+  }
+}
+5. Uma pessoa resolveu fazer uma aplicação em uma poupança programada em que o valor acumulado é igual a p * ((1+i)n –1) / i, onde p é a aplicação mensal, i é a taxa e n é o número de meses. Faça um programa para ler o valor constante da aplicação mensal, a taxa e o número de meses, calcular e mostrar o rendimento.
+R:
+using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int n;
+    double p=0,i=0,va,r;
+    Console.WriteLine ("Digite o valor que deseja aplicar: ");
+    p = double.Parse(Console.ReadLine());//Coleta o valor da aplicação mensal
+    Console.WriteLine("Digite a taxa de juros: ");
+    i = double.Parse(Console.ReadLine());//coleta a taxa de juros
+    Console.WriteLine("Digite o número de meses: ");
+    n = int.Parse(Console.ReadLine());//coleta o numero de meses
+    va= p * (Math.Pow(1 + i, n) - 1) / i;//calcula o valor acumulado da aplicação
+    r= va - (p*n);//calcula o rendimento da aplicação
+    Console.WriteLine("O valor acumulado é: {0:C} ", r);//escreve de maneira monetária
+  }
+}
+6. Faça um programa para ler dois números reais e salvá-los nas variáveis A e B, em seguida, efetuar a troca dos valores de forma que a variável A passe a ter o valor da variável B e viceversa. No final, imprimir os valores finais.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int a=0,b=0,aux=0;
+    Console.WriteLine ("Digite dois números:");
+    a=int.Parse(Console.ReadLine()); //coleta os valores das variáveis
+    b=int.Parse(Console.ReadLine());
+    //troca de valores
+    aux=a;
+    a=b;
+    b=aux;
+    Console.WriteLine("Os números invertidos são: \n {0} \n {1}",a,b); //imprime os números invertidos
+  }
+}
+7. Faça um programa que leia quantidade de dias sem acidentes em uma empresa. Depois apresente os dias sem acidentes separados em anos, meses e dias.
+Considere que 1 ano tem 365 dias e um mês tem 30 dias
+Exemplo:
+Entrada: 400 dias
+Saída: 1 ano, 1 mês e 5 dias
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int dias;
+    double a,m,d;
+    Console.WriteLine ("Digite a quantidade de dias sem acidentes em sua empresa:");
+    dias= int.Parse(Console.ReadLine()); //coleta os dias exatos
+    a=dias/365; //calcula a quantidade de anos
+    m=(dias%365)/30; //calcula a quantidade de meses
+    d=(dias%365)%30; //calcula a quantidade de dias
+    Console.WriteLine("Sua empresa está há: {0} ano(s), {1} mês(es) e {2} dia(s) sem acidentes",a,m,d); //imprime o resultado
+  }
+}
+8. Faça um programa para ler uma conta corrente (sempre com 3 dígitos) e imprimir seu dígito verificador:
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int c;
+    double x,y,z,inverso,d;
+    Console.WriteLine ("Digite o número da conta com 3 digitos:");
+    c=int.Parse(Console.ReadLine()); //coleta o número da conta
+   //coleta de número inverso
+    x=c/100;
+    y=(c%100)/10;
+    z=(c%100)%10;
+    inverso=z*100+y*10+x;
+    d=c+inverso; //soma-se os dois números para achar o digito
+    Console.WriteLine("O digito verificador da conta é: {0}",d);//imprime o valor
+  }
+}
