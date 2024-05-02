@@ -1,1 +1,369 @@
-44455
+Lista de Exercícios 03 ATP
+1.	Fazer um programa que leia uma sequência de valores inteiros fornecida pelo usuário em uma linha de entrada e conte o número de valores positivos, negativos e zeros.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+     int n=0,z=0,p=0;//n negativos, z zeros e p positivos
+    for(int i=0;i<10;i++){ //coloquei o programa para repetir apenas 10 vezes
+      Console.WriteLine ("Digite um número inteiro:");//coleta do número
+      int x=int.Parse(Console.ReadLine());
+      if(x<0){//se for menor que 0, então acrescenta 1 no valor de n
+        n++;
+      }
+      else if(x==0){//se for igual a 0, então acrescenta 1 no valor de z
+        z++;
+      }
+      else{//se for maior que 0, então acrescenta 1 no valor de p
+        p++;
+      }
+    }
+    Console.WriteLine("Você digitou {0} números negativos, {1} números zero e {2} positivos", n,z,p);//imprime a contagem de negativos, zeros e positivos
+    
+  }
+}
+2.	Adaptar o programa acima para que ele calcule o percentual dos valores positivos, negativos e zeros em relação ao total de valores fornecidos.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+     double n=0,z=0,p=0;//n negativos, z zeros e p positivos
+    for(int i=0;i<10;i++){ //coloquei o programa para repetir no máximo 10 vezes
+      Console.WriteLine ("Digite um número inteiro:");//coleta do número
+      int x=int.Parse(Console.ReadLine());
+      if(x<0){//se for menor que 0, então acrescenta 1 no valor de n
+        n++;
+      }
+      else if(x==0){//se for igual a 0, então acrescenta 1 no valor de z
+        z++;
+      }
+      else{//se for maior que 0, então acrescenta 1 no valor de p
+        p++;
+      }
+      }
+      n=(n/10)*100;//divide a quantidade de números negativos digitados pela quantidade de repetições e multiplica por 100, achando a porcentagem 
+      z=(z/10)*100; //divide a quantidade de números zero digitados pela quantidade de repetições e multiplica por 100, achando a porcentagem 
+      p=(p/10)*100; //divide a quantidade de números positivos digitados pela quantidade de repetições e multiplica por 100, achando a porcentagem 
+    Console.WriteLine("Você digitou {0} % de números negativos, {1} % de números zero e {2} % de positivos", n,z,p);//imprime a porcentagem de negativos, zeros e positivos
+
+  }
+}
+3. Faça um programa que receba dez números e verifique se eles são divisíveis por 3 e 9 (ao mesmo tempo), por 2 e por 5. Caso algum número não seja divisível por nenhum desses números mostre a mensagem “Número não é divisível pelos valores”. Apresente também ao final a quantidade de números divisíveis por 3 e 9, por 2 e por 5.
+OBS: Divisibilidade por 2: todo número par (terminado em 0, 2, 4, 6, 8) é divisível por 2.
+Divisibilidade por 3: um número é divisível por 3, se a soma de seus algarismos é divisível por 3. Exemplos: 18 é divisível por 3 pois 1+8=9 que é divisível por 3; 576 é divisível por 3 pois: 5+7+6=18 que é divisível por 3; mas 134 não é divisível por 3, pois 1+3+4=8 que não é divisível por 3.
+Divisibilidade por 5: um número é divisível por 5 se o seu algarismo final é zero ou 5.
+Divisibilidade por 9: se a soma de todos os algarismos de um número for divisível por 9, 
+então esse número é divisível por 9. Exemplo: o número 6.282 é divisível por 9, pois 6 + 2 + 8 + 2 = 18.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double x=0,dtn=0,dd=0,dc=0;//dtn: divisivel por tres e nove; dd: d. por dois; dc: d. por cinco
+    for(int i=0;i<10;i++){
+      Console.WriteLine ("Digite um número positivo inteiro: ");//coleta número do usuário
+      x=int.Parse(Console.ReadLine());
+      if((x%3==0) && (x%9==0)){ //se for divisivel pelos dois, então acrescenta 1 ao valor de dtn
+        dtn++;
+      }
+      else if(x%2==0){ //se for divisivel por 2, então acrescenta 1 ao valor de dd;
+        dd++;
+      }
+      else if(x%5==0){//se for divisivel por 5, então acrescenta 1 ao valor de dc;
+        dc++;
+      }
+      else{ //se não for por nenhum acima, cai na seguinte mensagem
+        Console.WriteLine("Número não é divisível pelos valores \n");        
+      }
+    }
+    Console.WriteLine("A quantidade de divisiveis por 3 e 9 simultaneamente é {0}, por 2 é {1} e por 5 é {2}", dtn,dd,dc); //imprime o resultado
+  }
+}
+
+4. Escreva um algoritmo que calcule o fatorial de um número. O fatorial de um número n é 
+representado por n! e é calculado como apresentado abaixo:
+ n! = n x (n – 1) x (n – 2) x ... x 2 x 1, para n > 0 e 0! = 1.
+ Exemplos:
+ 5! = 5 x 4 x 3 x 2 x 1 = 120
+ 4! = 4 x 3 x 2 x 1 = 24
+ 3! = 3 x 2 x 1 = 6
+ 2! = 2 x 1 = 2
+ 1! = 1
+ 0! = 1 (OBS: o fatorial de 0 é sempre 1)
+R: 
+using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int x;
+    Console.WriteLine ("Digite um número:");//coleta de número do usuário
+    x=int.Parse(Console.ReadLine());
+while (!int.TryParse(Console.ReadLine(), out x) || x < 0){//o programa verifica se o número é positivo, caso contrário, ele imprime a mensagem e possibilita o usuário de digitar novamente
+        Console.WriteLine("Entrada inválida. Por favor, digite um número natural (não negativo).");
+        Console.Write("Digite novamente: ");
+    }
+    int res=Calcula(x);//chama a função calcula para o número do usuário
+    Console.WriteLine("fatorial é igual a " + res);//imprime o resultado
+  }
+  static int Calcula(int n){//função para calcular fatorial
+    if (n == 0){//se o número for 0, então fatorial é igual a 1 por regra
+    return 1;
+    }
+    int res=1;//res inicia valendo 1
+    for(int i=1;i<=n;i++){//i é o número que irá crescer até chegar ao valor escolhido pelo usuário
+      res *= i;//res multiplicará seu valor inicial com i, e tomará como valor o resultado da multiplicação. Repetirá esse processo até o i chegar a seu limite imposto na condição, fazendo assim o fatorial do número
+    }
+    return res;//retornará o valor final do fatorial
+  }
+}
+5. Escrever um algoritmo que lê um valor N inteiro e positivo e que calcula e escreve o valor 
+de E:
+E = 1 + 1 / 1! + 1 / 2! + 1 / 3! + .... + 1 / N!
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite um número positivo:");//coleta o número do usuário
+    int x=int.Parse(Console.ReadLine());
+    if(x>0){//se e somente se o número for positivo o programa funciona.
+      double e=Calcula(x);//chama a função para calcular o valor de e para o número escolhido
+      Console.WriteLine("O valor de E para esse número é:" + e);//imprime o valor de e
+    }
+  }
+  static double Calcula(int n){//função q calcula o valor de e
+    double res=1, x=1;
+    for(double i=1;i<=n;i++){//repetição que ficará incrementando valor de i até chegar ao valor do usuário
+      res *= i;//fatorial
+      x += 1/res;//x inicia com 1 e vai somando o número 1 sobre o valor do fatorial da vez.
+    }
+    return x; //retorna o valor de x
+  }
+}
+
+6. A prefeitura de uma cidade fez uma pesquisa entre seus habitantes, coletando dados sobre o 
+salário e número de filhos de cada habitante. A prefeitura deseja saber: 
+a) A média do salário da população; 
+b) A média do número de filhos; 
+c) O maior salário; 
+d) O percentual de pessoas com salário até R$100,00. 
+O final da leitura de dados se dará com a entrada de um salário negativo.
+R: using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int y = 0, sy = 0, ns = 0, nf = 0, sac = 0;
+        double x = 0, sx = 0, mx = 0, my = 0, ms = 0;
+        while (x >= 0)
+        {
+            Console.Clear();//assim que for apurado o salário e qtde de filhos, o sistema limpa a tela e recomeça
+            Console.WriteLine("Digite o salário do cidadão (ou um nº negativo para finalizar)");
+            x = double.Parse(Console.ReadLine());//coleta salário
+            if (x >= 0)//sistema só irá rodar se o salário for 0 ou maior que zero.
+            {
+                ns++;//incrementa qtde de salários apurados
+                if (x > ms)//ms será o maior valor de salário. ele tomará o valor de x sempre que o mesmo for maior que ele.
+                {
+                    ms = x;
+                }
+                if (x <= 100)//se salário for menor que 100 reais, incrementa o valor de sac(salario abaixo de cem)
+                {
+                    sac++;
+                }
+                Console.WriteLine("Digite o nº de filhos do cidadão");//coleta nº de filhos
+                y = int.Parse(Console.ReadLine());
+                nf++;//incrementa a qtde de numero de filhos coletados.
+                sx += x;//soma os salários digitados
+                sy += y;//soma os filhos digitados
+            }            
+        }
+        mx = sx / ns;//faz a média salarial dividindo a soma dos salários digitados pela quantidade digitada
+        my = sy / nf;//faz a média do nº de filhos dividindo a soma dos filhos digitados pela quantidade digitada
+        double pm = ((double)sac / ns) * 100;//faz a % de pessoas que recebem até 100 reais, dividindo o sac pela quantidade digitada
+        Console.WriteLine("A média de salário é {0}, a média de filhos é {1}, o maior salário é {2} e {3:F2}% recebem uma renda de até R$100", mx, my, ms, pm);//imprime o resultado
+    }
+}
+7. Escreva um algoritmo que lê um valor n inteiro e positivo e que calcula a seguinte soma: 
+S = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
+O algoritmo deve escrever cada termo gerado e o valor final de S.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite um número positivo:");//coleta o número do usuário
+    int x=int.Parse(Console.ReadLine());
+    if(x>0){//se e somente se o número for positivo o programa funciona.
+      double e=Calcula(x);//chama a função para calcular o valor de e para o número escolhido
+      Console.WriteLine("O valor de S para esse número é:{0:F2}", e);//imprime o valor de e com apenas duas casas decimais depois da virgula
+    }
+  }
+  static double Calcula(int n){//função q calcula o valor de e
+    double x=1;
+    for(double i=2;i<=n;i++){//repetição que ficará incrementando valor de i até chegar ao valor do usuário
+      x += 1/i;//x inicia com 1 e vai somando o número 1 sobre o valor do fatorial da vez.
+      Console.WriteLine($"{x:F2}");//imprime cada valor formado com apenas duas casas decimais depois da virgula
+    }
+    return x; //retorna o valor de x
+  }
+}
+8. Faça um programa que imprima os L primeiros elementos da série de Fibonacci. Por 
+exemplo, se o usuário digitou o número 40, deverão ser apresentados os 40 números da 
+sequência na tela.
+OBS:
+A série de Fibonacci é uma sequência de números inteiros iniciada por zero e um, cada 
+termo subsequente corresponde a soma dos dois números anteriores: 
+0, 1, 1, 2, 3, 5, 8, 13, 21... R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite um número limite para a sequência de Fibonacci");
+    int x=int.Parse(Console.ReadLine());//coleta número
+    Fibo(x);
+  }
+  static void Fibo(int L){
+    if (L <= 0)//se o usuário digitar número negativo ou 0 o sistema para
+    {
+        Console.Write("O número L deve ser positivo.");
+    }
+    int a = 0;
+    int b = 1;
+    Console.Write($"{a} "); // Imprime o primeiro número (0)
+    if (L > 1)
+    {
+        Console.Write($"{b} "); // Imprime o segundo número (1)
+    }
+    for (int i = 2; i < L; i++)
+    {
+        int next = a + b;
+        Console.Write($"{next} ");
+        a = b;//a toma o valor de b
+        b = next;//b toma o valor da soma 
+    }
+  }
+}
+9. Faça um programa que imprima a soma de todos os elementos da série de Fibonacci menores que L. O valor de L deve ser informado pelo usuário. 
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite um número limite para a sequência de Fibonacci");
+    int x=int.Parse(Console.ReadLine());//coleta número
+    int a=Fibo(x);//chama a função
+    Console.WriteLine("Soma dessa sequência é:"+ a);//imprime o resultado
+  }
+  static int Fibo(int L){
+    if (L <= 0)//se o usuário digitar número negativo ou 0 o sistema para
+    {
+        Console.Write("O número L deve ser positivo.");
+    }
+    int a = 0;
+    int b = 1;
+    int c=0;//soma da sequencia
+    for (int i = 2; i < L; i++)
+    {
+        int next = a + b;
+        a = b;//a toma o valor de b
+        b = next;//b toma o valor da soma 
+        c+= next;
+    }
+    return c;
+  }
+}
+
+10.	Escreva o algoritmo para um empresário que deseja fazer o levantamento do lucro das mercadorias que ele comercializa. O usuário deve informar o preço de compra e de venda de cada mercadoria. O algoritmo deve interromper a leitura quando o usuário informar o preço de compra igual a 0. O algoritmo deve:
+a) Determinar e escrever quantas mercadorias proporcionaram: 
+i) Lucro < 10% 
+ii) 10% <= Lucro <= 20% 
+iii) Lucro > 20% 
+b) Determinar e escrever o valor total de compra e de venda de todas as mercadorias, 
+assim como o lucro total. 
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Rodar();
+    }
+  static void Rodar(){
+    int x=0,y=0,p,sc=0,sv=0,lt=0,md=0,mv=0,av=0;
+    double z=0;
+    Console.WriteLine("Digite a quantidade de produtos que deseja verificar");
+    p=int.Parse(Console.ReadLine());
+    for(int i=0;i<p;i++){
+      Console.Clear();
+        Console.WriteLine ("Digite o preço de compra");
+          x=int.Parse(Console.ReadLine());
+          Console.WriteLine ("Digite o preço de venda");
+          y=int.Parse(Console.ReadLine());
+        z=(((double)y-x)/x)*100;
+        if(z<10){
+          md++;
+        }
+        else if(z<=20){
+          mv++;
+        }
+        else{
+          av++;
+        }
+      sc+=x;
+      sv+=y;
+    }  
+    Console.WriteLine("Você teve lucro menor que 10% em {0} produtos,\n acima de 10% e menor que 20% em {1} produtos \n e acima de 20% em {2} produtos.", md,mv,av);
+    lt=sv-sc;
+    if(lt>0){
+      Console.Write("Lucro total é igual a {0}", lt);
+    }
+    else{
+      Console.Write("Prejuizo total é igual a {0}", lt);
+    }
+    
+  }
+}
+
+
+11. Em uma eleição presidencial existem quatro candidatos. Os votos são informados através
+de códigos. Os dados utilizados para a contagem dos votos obedecem à seguinte
+codificação:
+1, 2, 3, 4 = voto para os respectivos candidatos;
+5 = voto nulo;
+6 = voto em branco;
+Elabore um algoritmo que leia o código do candidado em um voto. Calcule e escreva:
+- Total de votos para cada candidato;
+- Total de votos nulos;
+- Total de votos em branco.
+
+Como finalizador do conjunto de votos, tem-se o valor 0.
+R: using System; 
+class Program { 
+public static void Main (string[] args) { 
+Opcao();//chama o procedimento Opcao 
+int x= 1;//valor inicial do x é 1 
+Voto(ref x);//chama o procedimento voto 
+} 
+static void Opcao(){//somente mostra ao usuário as opções de voto 
+Console.WriteLine ("Programa de Eleições 2024"); 
+Console.WriteLine ("1= João"); 
+Console.WriteLine ("2= Marcio"); 
+Console.WriteLine ("3= Lucio"); 
+Console.WriteLine ("4= Celia"); 
+Console.WriteLine ("5= Voto Nulo"); 
+Console.WriteLine ("6= Voto em branco"); 
+Console.WriteLine ("0= parar o programa \n"); 
+} 
+static void Voto(ref int x){//faz a contagem de voto e imprime o total de cada candidato 
+int a=0,b=0,c=0,d=0,e=0,f=0; 
+while(x>0){//se o usuário digitar 0, o sistema para o looping 
+Console.WriteLine ("Digite o código de um dos candidatos abaixo para votar"); 
+x=int.Parse(Console.ReadLine()); 
+if (x==1) a++; 
+else if(x==2) b++; 
+else if(x==3) c++; 
+else if(x==4) d++; 
+else if(x==5) e++; 
+else if(x==6) f++; 
+else Console.WriteLine("Opção incorreta"); 
+} 
+Console.Clear();//apaga toda a apuração de votos no console 
+Console.Beep();//toca um som como se fosse uma urna 
+Console.WriteLine(" Total de votos para o João foi de {0},\n para o Marcio foram {1},\n para o Lucio foram {2},\n para a Celia foram {3},\n total de nulos foi de {4}\n e de votos em branco foram {5}", a,b,c,d,e,f);//imprime a contagem de votos 
+} 
+}
