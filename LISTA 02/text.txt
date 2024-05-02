@@ -1,1 +1,246 @@
-44455
+Lista 2 de Atp
+1. Dado dois números, imprimir somente o maior deles.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite dois números: ");
+    int a=int.Parse(Console.ReadLine());//coleta o primeiro número
+    int b=int.Parse(Console.ReadLine());//coleta o segundo número
+    if(a>b) //se o valor do primeiro for maior que o segundo, então o console irá imprimir o mesmo
+    Console.WriteLine("O maior número é:{0} ", a);
+    else //se o valor do primeiro não for maior que o segundo, então o console irá imprimir o segundo número
+    Console.WriteLine("O maior número é: {0}", b);
+  }
+}
+2. Faça um algoritmo que leia 2 números inteiros e faça sua adição. Se o resultado for maior
+ou igual a 10, some 5 a este número. Caso contrário some 7 a ele. Imprima o resultado
+final.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {    
+    int x,y,soma;
+    Console.WriteLine ("Esse é um programa que soma dois valores. Se a soma der menor que 10, o sistema irá somar 7, caso contrário, irá somar 5 no resultado final.\n Digite dois números inteiros: ");//coleta os dois números
+    x=int.Parse(Console.ReadLine());
+    y=int.Parse(Console.ReadLine());
+    soma=x+y;//soma os dois números coletados
+    if(soma>=10){//se for maior ou igual a 10, então o programa soma 5 ao seu valor 
+      soma+=5;
+    }
+    else{//se não for maior ou igual a 10, soma 7 ao seu valor
+      soma+=7;
+    }
+    Console.Write("soma dos dois: {0} ", soma);//imprime o resultado
+  }
+}
+3. Faça um programa para ler os coeficientes de uma equação do primeiro grau (ax + b = 0), calcular e escrever a raiz da equação.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double a,b,x;
+      Console.WriteLine ("digite o valor de dois coeficientes:");//coleta de valores
+      a=double.Parse(Console.ReadLine());
+    if(a>0){//programa já avisa o usuário que não terá raiz da equação se o valor de a for 0
+      b=double.Parse(Console.ReadLine());
+      x=-b/a;
+      Console.WriteLine("A raiz da equação ax+b=0 é igual a: {0}", x);//imprime o resultado
+    }
+    else{
+      Console.WriteLine("Não existe raiz se o primeiro coeficiente for igual a 0");//se não for maior que 0 o valor de a, imprime-se essa mensagem ao usuário
+    }
+    
+    
+  }
+}
+4. Faça um algoritmo que leia o ano de nascimento de uma pessoa e calcule sua idade, considerando o ano atual. Para verificar se já fez aniversário no ano atual pergunte se a pessoa já fez aniversário, sendo que ela pode entrar com a informação "S"(sim) ou "N" (não). Com isso, é possível ter maior precisão sobre a idade. Verifique também se a pessoa já tem idade para conseguir Carteira de Habilitação (18 anos ou mais) e imprima a mensagem referente a esta checagem. Imprima a idade da pessoa na tela.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite o seu ano de nascimento:");
+    int a=int.Parse(Console.ReadLine());//coleta do ano
+    Console.WriteLine("Já fez aniversário esse ano? (s ou n) ");
+    char niver=char.Parse(Console.ReadLine());//coleta do aniversário
+    if(niver== 's'){//se já fez aniversário no ano, então o sistema irá calcular da seguinte forma:
+      double anos= 2024-a;
+      Console.WriteLine("Voce tem {0} anos", anos); //imprime o resultado     
+    }
+    else{ //se ainda não fez aniversário no ano, então o sistema irá calcular da seguinte forma:
+      double an=(2024-a)-1;
+      Console.WriteLine("Você tem {0} anos", an); //imprime o resultado
+    }
+  }
+}
+5. Faça um algoritmo que, segundo uma nota informada pelo usuário, verifique em qual faixa a mesma se encaixa e imprima para o usuário a mensagem correspondente conforme a tabela abaixo:
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite sua nota: ");//coleta de nota
+    int nota=int.Parse(Console.ReadLine());
+    if(nota<0 || nota>10){//se for menor que 0 ou maior que 10, então nota invalida
+      Console.WriteLine("Nota inválida");
+    }
+    else if(nota<5){//se for menor que 5, nota insatisfatória
+      Console.WriteLine("Nota insatisfatória");
+    }
+    else if(nota>=5 && nota<7){//se for maior ou igual a 5 e menor q 7, então nota regular
+      Console.WriteLine("Nota Regular");
+    }
+    else if(nota>=7 && nota<8){//se for maior ou igual a 7 e menor que 8, então boa nota
+      Console.WriteLine("Boa nota");      
+    }
+    else{//se não se encaixar em nenhuma outra condição dita acima, então automaticamente será uma ótima nota
+      Console.WriteLine("Ótima nota");
+    }
+  }
+}
+6. Um hotel com 75 apartamentos deseja fazer uma promoção especial de final de semana, concedendo um desconto de 25% na diária. Com isso, espera aumentar sua taxa de ocupação de 50% para 80%. Sendo dado o valor normal da diária, calcular e imprimir: a) O valor da diária promocional; b) O valor total arrecadado com 80% de ocupação e diária promocional; c) O valor total arrecadado com 50% de ocupação e diária normal; d) A diferença entre esses dois valores
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double diaria, dp, v80, v50, dif;
+    Console.WriteLine ("Digite a diária do hotel:");//coleta a diária normal
+    diaria=double.Parse(Console.ReadLine());
+    dp=diaria-(diaria*0.25);//calcula o promocional de 25%
+    Console.WriteLine("Valor promocional será de: {0}", dp);//imprime o valor promocional
+    if(diaria>1){//se o valor da diária for maior que 0
+      v50=diaria*(75*0.5);//calcula o valor adquirido com a metade dos quartos alugados com o valor normal da diária
+      Console.WriteLine("Valor liquido com a diária normal sairá a {0}", v50);//imprime o valor
+      v80=dp*(75*0.8); //calcula o valor adquirido com 80% dos quartos alugados com o valor promocional da diária
+      Console.WriteLine("Valor liquido com a diária promocional sairá a {0}", v80);//imprime o valor
+      if(v50>v80){//se valor normal der maior...
+        dif=v50-v80;//diferença será calculada subtraindo o valor da diária normal pela promocional
+        Console.WriteLine("A diferença de arrecadação será um prejuízo de {0}", dif);//imprime a diferença nessa situação
+      }
+      else{//se valor promocional der maior...
+        dif=v80-v50;//diferença será calculada subtraindo o valor da diária promocional pela normal
+        Console.WriteLine("A diferença de arrecadação será um lucro de {0}", dif);//imprime a diferença nessa situação
+      }
+     
+    }
+    
+  }
+}
+7. Faça um programa para calcular e imprimir o valor de Y, dado um valor de X:
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    int x=0;
+    double y=0;
+    Console.WriteLine ("digite o valor de x: ");
+    x=int.Parse(Console.ReadLine());//coleta o valor de x
+    if(x<=1){//se for menor ou igual a 1, então y será 1
+      y=1;
+    }
+    else if(x>1 && x<=2){//se for maior q 1 e menor ou igual a 2, então y será 2
+      y=2;
+    }
+    else if(x>2 && x<=3){//se for maior q 2 e menor ou igual a 3, então y será x ao quadrado
+      y=Math.Pow(x,2);
+    }
+    else{//se for maior q 3, então y será x ao cubo
+      y=y=Math.Pow(x,3);
+    }
+    Console.WriteLine("O valor de y é: {0}", y);//imprime o valor de y
+  }
+}
+8. Construa um programa que lê uma opção conforme abaixo (usar estrutura SWITCH) e o
+salário atual do funcionário, calcula e exibe o novo salário:
+ A = aumento de 8% no salário;
+ B = aumento de 11% no salário;
+ C = aumento fixo no salário
+(de R$ 350,00 se o salário atual for até R$ 1000 e de R$ 200,00 se o salário atual for
+maior que R$ 1000).
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    double s;
+    string o;
+    Console.WriteLine ("Digite o valor do salário: ");//coleta do salário do usuário
+    s=double.Parse(Console.ReadLine());
+    Console.WriteLine ("Digite a categoria(A,B ou C): ");//coleta da categoria do funcionário
+    o=(Console.ReadLine());    
+    switch(o){//estrutura condicional baseada na escolha da categoria do funcionario
+    case "A": s+=(s*0.08);//soma o salário digitado com 8% do mesmo
+      Console.WriteLine("O aumento será de 8% e o salário atual será de {0}", s);
+      break;
+    case "B": s+=(s*0.11);//soma o salário digitado com 11% do mesmo
+      Console.WriteLine("O aumento será de 11% e o salário atual será de {0}", s);
+      break;
+    case "C": if(s>1000){
+      s+=200;//soma o salário digitado com 200 se o mesmo for maior que 1000
+      Console.WriteLine("O aumento será de R$200 e o salário atual será de {0}", s);
+      }
+      else{
+        s+=350;//soma o salário digitado com 350 se o mesmo for menor que 1000
+        Console.WriteLine("O aumento será de R$350 e o salário atual será de {0}", s);
+      }
+      break;    
+    }
+  }
+}
+9. Fazer um programa para:
+• Ler um símbolo do teclado;
+• Identificar com a estrutura SWITCH e mostrar as seguintes mensagens, segundo o
+caso:
+o "SINAL DE MENOR"
+o "SINAL DE MAIOR"
+o "SINAL DE IGUAL"
+o "OUTRO SINAL"
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite um símbolo do teclado:");
+    string x=(Console.ReadLine());//coleta tecla do usuário
+    switch(x)
+    {//imprime a mensagem conforme a regra abaixo
+    case "<":Console.WriteLine("SINAL DE MENOR");
+      break;
+    case ">":Console.WriteLine("SINAL DE MAIOR");
+      break;
+    case "=":Console.WriteLine("SINAL DE IGUAL");
+      break;
+    default:Console.WriteLine("OUTRO SINAL");
+      break;
+    }
+    
+  }
+}
+10. Leia a velocidade máxima permitida em uma avenida e a velocidade com que o motorista
+estava dirigindo nela. Se o motorista estiver dentro do limite de velocidade, imprima a
+mensagem “Motorista respeitou a lei”. Se o motorista tiver ultrapassado a velocidade
+máxima permitida, calcule e imprima o valor da multa a ser cobrada, sabendo que os
+valores a serem cobrados são os seguintes:
+• 50 reais se o motorista ultrapassar em até 10km/h a velocidade permitida (ex: se a
+velocidade máxima for 50km/h e o motorista estiver a 60km/h ou a 56km/h);
+• 100 reais, se o motorista ultrapassar de 11km/h a 30km/h a velocidade permitida;
+• 200 reais, se estiver acima de 30km/h da velocidade permitida.
+R: using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite a velocidade máxima permitida na via:");//coleta a velocidade da via
+    int v=int.Parse(Console.ReadLine());
+    Console.WriteLine ("Digite a velocidade que o motorista estava dirigindo ao passar por ela:");//coleta a velocidade do condutor
+    int m=int.Parse(Console.ReadLine());
+    if(m<=v){//se velocidade do condutor for menor que a da via, então imprime a seguinte mensagem
+      Console.WriteLine("Motorista respeitou a lei");
+    }
+    else if(m<= (v + 10)){//se velocidade do condutor for menor ou igual que 10km a mais que a velocidade da via, então imprime a seguinte mensagem
+      Console.WriteLine("Multa de R$50");
+    }
+    else if(m<= (v + 30)){ //se velocidade do condutor for maior que 10 km e menor ou igual que 30km a mais que a velocidade da via, então imprime a seguinte mensagem
+      Console.WriteLine("Multa de R$100");
+    }
+    else{ //se velocidade do condutor for maior que 30km a mais que a velocidade da via, então imprime a seguinte mensagem
+      Console.WriteLine("multa de R$200");
+    }
+  }
+}
