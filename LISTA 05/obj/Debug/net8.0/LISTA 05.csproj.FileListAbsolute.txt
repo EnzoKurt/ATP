@@ -1,0 +1,15 @@
+/workspaces/ATP/LISTA 05/bin/Debug/net8.0/LISTA 05
+/workspaces/ATP/LISTA 05/bin/Debug/net8.0/LISTA 05.deps.json
+/workspaces/ATP/LISTA 05/bin/Debug/net8.0/LISTA 05.runtimeconfig.json
+/workspaces/ATP/LISTA 05/bin/Debug/net8.0/LISTA 05.dll
+/workspaces/ATP/LISTA 05/bin/Debug/net8.0/LISTA 05.pdb
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.AssemblyInfoInputs.cache
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.AssemblyInfo.cs
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.csproj.CoreCompileInputs.cache
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.sourcelink.json
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.dll
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/refint/LISTA 05.dll
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.pdb
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/LISTA 05.genruntimeconfig.cache
+/workspaces/ATP/LISTA 05/obj/Debug/net8.0/ref/LISTA 05.dll

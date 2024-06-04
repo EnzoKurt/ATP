@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/ATP/L4/L4.csproj": {}
+    "/workspaces/ATP/LISTA 05/LISTA 05.csproj": {}
   },
   "projects": {
-    "/workspaces/ATP/L4/L4.csproj": {
+    "/workspaces/ATP/LISTA 05/LISTA 05.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/ATP/L4/L4.csproj",
-        "projectName": "L4",
-        "projectPath": "/workspaces/ATP/L4/L4.csproj",
+        "projectUniqueName": "/workspaces/ATP/LISTA 05/LISTA 05.csproj",
+        "projectName": "LISTA 05",
+        "projectPath": "/workspaces/ATP/LISTA 05/LISTA 05.csproj",
         "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/ATP/L4/obj/",
+        "outputPath": "/workspaces/ATP/LISTA 05/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/codespace/.nuget/NuGet/NuGet.Config"
