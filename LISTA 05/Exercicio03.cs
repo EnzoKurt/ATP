@@ -1,7 +1,7 @@
 using System;
 
-class Program {
-  public static void Main (string[] args) {
+class Program Exercicio02{
+  public static void Rodar() {
     Console.WriteLine ("Notas alunos 2024");
     int a=10;//tamanho do vetor
     preencher(a);
