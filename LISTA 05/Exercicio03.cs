@@ -1,6 +1,6 @@
 using System;
 
-class Program Exercicio02{
+public class Exercicio02{
   public static void Rodar() {
     Console.WriteLine ("Notas alunos 2024");
     int a=10;//tamanho do vetor
