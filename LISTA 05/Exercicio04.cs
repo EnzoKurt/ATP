@@ -1,8 +1,8 @@
 using System;
 
-class Program
+public class Exercicio04
 {
-    public static void Main(string[] args)
+    public static void Rodar()
     {
         int[] v1 = new int[10];//declara os dois vetores
         int[] v2 = new int[10];
