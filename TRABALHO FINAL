@@ -1,0 +1,151 @@
+using System;
+using System.IO;
+
+class Program
+{
+    // Vetor com o nome dos produtos
+    static string[] NomeProdutos = { "Produto A", "Produto B", "Produto C", "Produto D" };
+
+    // Vetor para armazenar a quantidade em estoque dos produtos
+    static int[] estoque = new int[4];
+
+    // Matriz para armazenar as vendas diárias de cada produto
+    static int[,] vendas = new int[4, 31]; // 4 produtos e 31 dias
+
+    static void Main(string[] args)
+    {
+        int opcao;
+        // Loop do menu principal
+        do
+        {
+            Console.Clear(); // Limpa a tela
+            Console.WriteLine("1 – Importar arquivo de produtos");
+            Console.WriteLine("2 – Registrar venda");
+            Console.WriteLine("3 – Relatório de vendas");
+            Console.WriteLine("4 – Relatório de estoque");
+            Console.WriteLine("5 – Criar arquivo de vendas");
+            Console.WriteLine("6 – Sair");
+            Console.Write("Escolha uma opção: ");
+            opcao = int.Parse(Console.ReadLine()); // Lê a opção escolhida
+
+            // Executa a ação correspondente à opção escolhida
+            switch (opcao)
+            {
+                case 1:
+                    ImportaProdutos(); // Importa produtos
+                    break;
+                case 2:
+                    RegistraVenda(); // Registra venda
+                    break;
+                case 3:
+                    ReportaVendas(); // Relatório de vendas
+                    break;
+                case 4:
+                    ReportaEstoque(); // Relatório de estoque
+                    break;
+                case 5:
+                    CriaArquivoDeVendas(); // Cria arquivo de vendas
+                    break;
+                case 6:
+                    Console.WriteLine("Saindo..."); // Sai do programa
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida."); // Opção inválida
+                    break;
+            }
+            Console.ReadKey(); // Aguarda uma tecla para continuar
+        } while (opcao != 6); // Continua até que a opção 6 (sair) seja escolhida
+    }
+
+    // Método para importar produtos com quantidades aleatórias
+    static void ImportaProdutos()
+    {
+        Random rand = new Random(); // Gera números aleatórios
+        using (StreamWriter writer = new StreamWriter("produtos.txt")) // Cria o arquivo produtos.txt
+        {
+            for (int i = 0; i < NomeProdutos.Length; i++) // Percorre todos os produtos
+            {
+                estoque[i] = rand.Next(100, 1001); // Define uma quantidade aleatória em estoque
+                writer.WriteLine($"{NomeProdutos[i]} {estoque[i]}"); // Escreve o produto e sua quantidade em estoque no arquivo
+            }
+        }
+        Console.WriteLine("Arquivo de produtos importado."); // Informa que o arquivo foi importado
+    }
+
+    // Método para registrar uma venda
+    static void RegistraVenda()
+    {
+        Console.Write("Digite o número do produto (0 a 3): ");
+        int CodProduto = int.Parse(Console.ReadLine()); // Lê o código do produto
+
+        Console.Write("Digite o dia do mês (1 a 31): ");
+        int dia = int.Parse(Console.ReadLine()); // Lê o dia do mês
+
+        Console.Write("Digite a quantidade vendida: ");
+        int quantidade = int.Parse(Console.ReadLine()); // Lê a quantidade vendida
+
+        if (quantidade <= estoque[CodProduto]) // Verifica se há estoque suficiente
+        {
+            vendas[CodProduto, dia - 1] += quantidade; // Adiciona a venda na matriz de vendas
+            estoque[CodProduto] -= quantidade; // Diminui a quantidade no estoque
+            Console.WriteLine("Venda registrada."); // Informa que a venda foi registrada
+        }
+        else
+        {
+            Console.WriteLine("Quantidade em estoque insuficiente."); // Informa que não há estoque suficiente
+        }
+    }
+
+    // Método para apresentar o relatório detalhado de vendas
+    static void ReportaVendas()
+    {
+        Console.WriteLine("Relatório de Vendas:");
+
+        // Cabeçalho dos produtos
+        Console.Write("Dia  ");
+        for (int i = 0; i < NomeProdutos.Length; i++)
+        {
+            Console.Write($"{NomeProdutos[i]} ");
+        }
+        Console.WriteLine();
+
+        // Exibição das vendas diárias
+        for (int dia = 0; dia < 31; dia++)
+        {
+            Console.Write($"Dia {dia + 1}: ");
+            for (int prod = 0; prod < NomeProdutos.Length; prod++)
+            {
+                Console.Write($"{vendas[prod, dia]} ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    // Método para apresentar o relatório de estoque
+    static void ReportaEstoque()
+    {
+        Console.WriteLine("Relatório de Estoque:");
+        for (int i = 0; i < NomeProdutos.Length; i++) // Percorre todos os produtos
+        {
+            Console.WriteLine($"{NomeProdutos[i]}: {estoque[i]}"); // Exibe o produto e sua quantidade em estoque
+        }
+    }
+
+    // Método para criar o arquivo de vendas totais
+    static void CriaArquivoDeVendas()
+    {
+        using (StreamWriter writer = new StreamWriter("total_vendas.txt")) // Cria o arquivo total_vendas.txt
+        {
+            for (int i = 0; i < NomeProdutos.Length; i++) // Percorre todos os produtos
+            {
+                int totalVendas = 0;
+                for (int j = 0; j < 31; j++) // Calcula o total de vendas do produto
+                {
+                    totalVendas += vendas[i, j];
+                }
+                writer.WriteLine($"{NomeProdutos[i]}: {totalVendas}"); // Escreve o total de vendas no arquivo
+            }
+        }
+        Console.WriteLine("Arquivo de vendas criado."); // Informa que o arquivo foi criado
+    }
+}
